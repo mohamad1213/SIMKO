@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -64,3 +65,77 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+=======
+# SIMKO - Sistem Informasi Manajemen Keanggotaan & Organisasi
+
+SIMKO adalah aplikasi berbasis **Laravel** untuk mengelola keanggotaan organisasi, event, dan berita dengan sistem multi-role (Admin, User, dan Pengunjung).  
+Aplikasi ini dibuat untuk memudahkan proses pendaftaran, verifikasi anggota, dan penyebaran informasi organisasi.
+
+---
+
+## 🚀 Fitur Utama
+
+### 👑 Admin
+- Manajemen keanggotaan (CRUD anggota).
+- Verifikasi pendaftaran anggota baru.
+- Mengubah status anggota: `pending → proses → terverifikasi`.
+- Upload & kelola informasi event/kompetisi.
+- Kelola berita organisasi.
+- Kelola kesan & pesan dari pengunjung.
+
+### 👤 User / Anggota
+- Registrasi calon anggota baru.
+- Login setelah diverifikasi admin.
+- Melengkapi data profil pribadi.
+- Melihat status pendaftaran & keanggotaan.
+- Mengakses info event & berita terbaru.
+
+### 👥 Pengunjung
+- Melihat daftar anggota terverifikasi.
+- Pencarian data keanggotaan.
+- Melihat berita & event organisasi.
+- Mengirim kesan & pesan kepada admin.
+
+---
+
+## ⚙️ Tech Stack
+- **Backend:** Laravel 10
+- **Database:** MySQL / MariaDB (phpMyAdmin)
+- **Frontend:** Blade Template + Bootstrap
+- **Authentication:** Laravel Auth (Login, Register, Role-based Access)
+
+---
+
+## 📌 Instalasi
+
+1. Clone repository:
+   ```bash
+   git clone https://github.com/username/simora.git
+   cd simora
+
+2.Install dependencies:
+<pre> ```bash 
+composer install
+npm install && npm run dev```</pre>
+
+3. Copy file .env.example menjadi .env lalu atur database:
+<pre> ``` env 
+DB_DATABASE=simora
+DB_USERNAME=root
+DB_PASSWORD=
+```</pre>
+4. Generate Key
+ <pre> ```bash 
+   php artisan key:generate```</pre>
+5. Jalankan migrasi database:
+<pre> ```bash 
+   php artisan migrate```</pre>
+
+6.jalankan Serve
+<pre> ```bash 
+   php artisan serve```</pre>
+
+
+
+
+>>>>>>> 65906520680634d0a9b5114c3c17de1d24b22917
