@@ -46,21 +46,26 @@ Aplikasi ini dibuat untuk memudahkan proses pendaftaran, verifikasi anggota, dan
    cd simora
 
 2.Install dependencies:
-<pre> ```bash composer install
+<pre> ```bash 
+composer install
 npm install && npm run dev```</pre>
 
 3. Copy file .env.example menjadi .env lalu atur database:
-<pre> ``` env DB_DATABASE=simora
+<pre> ``` env 
+DB_DATABASE=simora
 DB_USERNAME=root
 DB_PASSWORD=
 ```</pre>
 4. Generate Key
- <pre> ```bash php artisan key:generate```</pre>
+ <pre> ```bash 
+   php artisan key:generate```</pre>
 5. Jalankan migrasi database:
-<pre> ```php artisan migrate```</pre>
+<pre> ```bash 
+   php artisan migrate```</pre>
 
 6.jalankan Serve
-<pre> ```php artisan serve```</pre>
+<pre> ```bash 
+   php artisan serve```</pre>
 
 
 
