@@ -87,11 +87,11 @@ class AnggotaController extends Controller
     // Form edit anggota
     public function edit(Anggota $anggota)
     {
-        return view('anggota.edit', compact('anggotas'));
+        return view('anggota.edit', compact('anggota'));
     }
 
     // Update data anggota
-    public function update(Request $request, Anggota $anggotas)
+    public function update(Request $request, Anggota $anggota)
     {
         $request->validate([
             'nama' => 'required|string|max:255',
