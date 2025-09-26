@@ -13,11 +13,13 @@ Route::post('register', [AuthController::class, 'register'])->name('register.pro
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 // proteksi route
-Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('index'); // <-- arahkan ke index.blade.php
-    })->name('dashboard');
-});
+Route::get('/dashboard', function () {
+    if (auth()->user()->role === 'admin') {
+        return view('admin.index');
+    } else {
+        return view('user.index');
+    }
+})->name('dashboard');
 
 
 Route::resource('anggota', AnggotaController::class);

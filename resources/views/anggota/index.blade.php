@@ -25,10 +25,9 @@
                                     <option value="2">Recent</option>
                                 </select>
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#modalAdd">
+                                <a class="btn btn-primary" type="button" href="{{ route('anggota.create')}}">
                                     + New Student
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -53,9 +52,7 @@
                                             <td>{{ $anggota->email }}</td>
                                             <td>{{ $anggota->no_hp }}</td>
                                             <td>
-                                                <span class="badge">
-                                                    {{ ucfirst($anggota->status) }}
-                                                </span>
+                                                <button class="btn btn-warning">{{ $anggota->status }}</button>
                                             </td>
                                             <td class="text-end">
                                                 <a href="{{ route('anggota.show', $anggota->id) }}" class="btn btn-info btn-sm">

@@ -14,11 +14,11 @@
 
 	<!-- Page Title Here -->
 	<title>Akademi : School and Education Management Admin Dashboard Template</title>
-
+	 <link href="{{ url('admin/vendor/dropzone/dist/dropzone.css') }}" rel="stylesheet">
 <!-- FAVICONS ICON -->
 	<link rel="shortcut icon" type="image/png" href="images/favicon.png" >
+	<link rel="stylesheet" href="{{ url('admin/vendor/jquery-smartwizard/dist/css/smart_wizard.min.css') }}">
 	<link href="{{url('admin/vendor/wow-master/css/libs/animate.css')}}" rel="stylesheet">
-	<link href="{{url('admin/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}" rel="stylesheet">
 	<link rel="stylesheet" href="{{url('admin/vendor/bootstrap-select-country/css/bootstrap-select-country.min.css')}}">
 	<link rel="stylesheet" href="{{url('admin/vendor/jquery-nice-select/css/nice-select.css')}}">
 	<link href="{{url('admin/vendor/datepicker/css/bootstrap-datepicker.min.css')}}" rel="stylesheet">
@@ -29,4 +29,3 @@
 	<!-- Style css -->
 	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
     <link href="{{url('admin/css/style.css')}}" rel="stylesheet">
-	

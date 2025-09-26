@@ -15,7 +15,8 @@
                 <h3 class="mb-2 text-white">Welcome back!</h3>
                 <p class="mb-4">User Experience & Interface Design <br>Strategy SaaS Solutions</p>
             </div>
-            <div class="aside-image position-relative" style="background-image:url({{ url('admin/images/background/pic-2.png') }});">
+            <div class="aside-image position-relative"
+                style="background-image:url({{ url('admin/images/background/pic-2.png') }});">
                 <img class="img1 move-1" src="{{url('admin/images/background/pic3.png')}}" alt="">
                 <img class="img2 move-2" src="{{url('admin/images/background/pic4.png')}}" alt="">
                 <img class="img3 move-3" src="{{url('admin/images/background/pic5.png')}}" alt="">
@@ -29,6 +30,12 @@
                     <div class="row no-gutters">
                         <div class="col-xl-12 tab-content">
                             <div id="sign-up" class="auth-form tab-pane fade show active  form-validation">
+                                @if(session('error'))
+                                    <div class="alert alert-danger">{{ session('error') }}</div>
+                                @endif
+                                @if(session('success'))
+                                    <div class="alert alert-success">{{ session('success') }}</div>
+                                @endif
                                 <form method="POST" action="{{ route('login.process') }}">
                                     @csrf
                                     <div class="text-center mb-4">

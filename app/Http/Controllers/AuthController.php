@@ -15,12 +15,6 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    // proses login
-     public function login()
-    {
-        return view('auth.login');
-    }
-
     public function loginProcess(Request $request)
     {
         $credentials = $request->only('email', 'password');
