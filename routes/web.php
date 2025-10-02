@@ -44,7 +44,7 @@ Route::get('/', function () {
 Route::get('/tentang', function () {
     return view('user.tentang');
 })->name('tentang');
-// Route::get('/keanggotaan', function () {
-//     return view('user.keanggotaan');
-// })->name('keanggotaan');
-Route::get('/keanggotaan', [AnggotaController::class, 'search'])->name('keanggotaan');
+Route::get('/keanggotaan', function () {
+    return view('user.keanggotaan');
+})->name('keanggotaan');
+// Route::get('/keanggotaan', [AnggotaController::class, 'search'])->name('keanggotaan');
