@@ -52,23 +52,38 @@
                                             <td>{{ $anggota->email }}</td>
                                             <td>{{ $anggota->no_hp }}</td>
                                             <td>
-                                                <button class="btn btn-warning">{{ $anggota->status }}</button>
+                                                <span class="badge 
+                                                    @if($anggota->status == 'pending') bg-warning 
+                                                    @elseif($anggota->status == 'proses') bg-info 
+                                                    @else bg-success @endif">
+                                                    {{ ucfirst($anggota->status) }}
+                                                </span>
                                             </td>
-                                            <td class="text-end">
-                                                <a href="{{ route('anggota.show', $anggota->id) }}" class="btn btn-info btn-sm">
-                                                    Detail
-                                                </a>
-                                                <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
-                                                    data-bs-target="#modalEdit{{ $anggota->id }}">
-                                                    Edit
-                                                </button>
-                                                <form action="{{ route('anggota.destroy', $anggota->id) }}" method="POST"
-                                                    class="d-inline">
-                                                    @csrf @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger"
-                                                        onclick="return confirm('Hapus?')">Delete</button>
-                                                </form>
-                                            </td>
+                                            @if(auth()->user()->role === 'admin')
+                                                <td class="text-end">
+                                                    <a href="{{ route('anggota.verifikasi', $anggota->id) }}"
+                                                        data-bs-toggle="modal" data-bs-target="#verifikasiModal{{ $anggota->id }}"
+                                                        class="btn btn-sm btn-primary">Verifikasi</a>
+                                                    <a href="{{ route('anggota.show', $anggota->id) }}"
+                                                        class="btn btn-info btn-sm">
+                                                        Detail Data
+                                                    </a>
+                                                </td>
+                                            @else
+                                                <td class="text-end">
+                                                    <a href="{{ route('anggota.show', $anggota->id) }}" class="btn btn-info btn-sm">
+                                                        Detail
+                                                    </a>
+                                                    <a href="{{ route('anggota.edit', $anggota) }}" class="btn btn-warning">Edit</a>
+
+                                                    <form action="{{ route('anggota.destroy', $anggota->id) }}" method="POST"
+                                                        class="d-inline">
+                                                        @csrf @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-danger"
+                                                            onclick="return confirm('Hapus?')">Delete</button>
+                                                    </form>
+                                                </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -79,6 +94,32 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="verifikasiModal{{ $anggota->id }}" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="{{ route('anggota.verifikasi', $anggota->id) }}" method="POST">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title">Verifikasi Anggota</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <select name="status" class="form-select">
+                            <option value="pending" {{ $anggota->status == 'pending' ? 'selected' : '' }}>Pending</option>
+                            <option value="proses" {{ $anggota->status == 'proses' ? 'selected' : '' }}>Proses</option>
+                            <option value="terverifikasi" {{ $anggota->status == 'terverifikasi' ? 'selected' : '' }}>
+                                Terverifikasi
+                            </option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Modal Add -->
     <div class="modal fade" id="modalAdd" tabindex="-1" aria-labelledby="modalAddLabel" aria-hidden="true">
@@ -178,4 +219,11 @@
         </div>
     @endforeach
     </div>
+    <script>
+        $('#myTable').DataTable({
+            responsive: false,
+            scrollX: true
+        });
+
+    </script>
 @endsection

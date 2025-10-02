@@ -3,7 +3,7 @@
         <ul class="metismenu" id="menu">
             @if(auth()->user()->role === 'admin')
                 <li>
-                    <a href="/" aria-expanded="false">
+                    <a href="/dashboard" aria-expanded="false">
                         <i class="material-symbols-outlined">home</i>
                         <span class="nav-text">Dashboard</span>
                     </a>
@@ -60,9 +60,9 @@
                 </li>
             @else
                 <li>
-                    <a href="/" aria-expanded="false">
+                    <a href="/dashboard" aria-expanded="false">
                         <i class="material-symbols-outlined">home</i>
-                        <span class="nav-text">Dashboard User</span>
+                        <span class="nav-text">Dashboard</span>
                     </a>
                 </li>
                 <li class="{{ request()->is('anggota*') ? 'active' : '' }}">

@@ -16,6 +16,19 @@ class AnggotaController extends Controller
     }
 
     // Form wizard pendaftaran anggota
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $anggotas = Anggota::where('status', 'terverifikasi') // hanya anggota terverifikasi
+            ->when($query, function ($q) use ($query) {
+                $q->where('nama', 'like', "%{$query}%"); // filter nama jika ada query
+            })
+            ->orderBy('nama', 'asc')
+            ->paginate(12); // pagination 12 anggota per halaman
+
+        return view('user.keanggotaan', compact('anggotas', 'query'));
+    }
     public function create()
     {
         return view('anggota.create');
@@ -66,9 +79,9 @@ class AnggotaController extends Controller
         $data = $request->all();
 
         // Upload file
-        foreach(['foto','ktp','kartu_keluarga','sertifikat'] as $file){
-            if($request->hasFile($file)){
-                $data[$file] = $request->file($file)->store('anggotas/'.$file,'public');
+        foreach (['foto', 'ktp', 'kartu_keluarga', 'sertifikat'] as $file) {
+            if ($request->hasFile($file)) {
+                $data[$file] = $request->file($file)->store('anggotas/' . $file, 'public');
             }
         }
 
@@ -78,12 +91,11 @@ class AnggotaController extends Controller
     }
 
     // Detail anggota
-    public function show(Anggota $anggota)
+    public function show($id)
     {
-        $anggotas = Anggota::all();
-        return view('anggota.show', compact('anggotas'));
+        $anggota = Anggota::findOrFail($id);
+        return view('anggota.show', compact('anggota'));
     }
-
     // Form edit anggota
     public function edit(Anggota $anggota)
     {
@@ -101,7 +113,7 @@ class AnggotaController extends Controller
             'agama' => 'required|string|max:50',
             'alamat' => 'required|string',
             'no_hp' => 'required|string|max:20',
-            'email' => 'nullable|email|unique:anggotas,email,'.$anggota->id,
+            'email' => 'nullable|email|unique:anggotas,email,' . $anggota->id,
             'nik' => 'nullable|string|max:20',
             'pendidikan' => 'nullable|string|max:50',
             'pekerjaan' => 'nullable|string|max:50',
@@ -124,12 +136,12 @@ class AnggotaController extends Controller
         $data = $request->all();
 
         // Upload file baru dan hapus file lama jika ada
-        foreach(['foto','ktp','kartu_keluarga','sertifikat'] as $file){
-            if($request->hasFile($file)){
-                if($anggota->$file){
+        foreach (['foto', 'ktp', 'kartu_keluarga', 'sertifikat'] as $file) {
+            if ($request->hasFile($file)) {
+                if ($anggota->$file) {
                     Storage::disk('public')->delete($anggota->$file);
                 }
-                $data[$file] = $request->file($file)->store('anggotas/'.$file,'public');
+                $data[$file] = $request->file($file)->store('anggotas/' . $file, 'public');
             }
         }
 
@@ -141,8 +153,8 @@ class AnggotaController extends Controller
     // Hapus anggota
     public function destroy(Anggota $anggota)
     {
-        foreach(['foto','ktp','kartu_keluarga','sertifikat'] as $file){
-            if($anggota->$file){
+        foreach (['foto', 'ktp', 'kartu_keluarga', 'sertifikat'] as $file) {
+            if ($anggota->$file) {
                 Storage::disk('public')->delete($anggota->$file);
             }
         }
@@ -150,5 +162,19 @@ class AnggotaController extends Controller
         $anggota->delete();
 
         return redirect()->route('anggota.index')->with('success', 'Anggota berhasil dihapus.');
+    }
+    public function verifikasi(Request $request, $id)
+    {
+        $anggota = Anggota::findOrFail($id);
+
+        $request->validate([
+            'status' => 'required|in:pending,proses,terverifikasi'
+        ]);
+
+        $anggota->update([
+            'status' => $request->status
+        ]);
+
+        return redirect()->route('anggota.index')->with('success', 'Status anggota berhasil diperbarui!');
     }
 }
