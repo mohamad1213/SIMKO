@@ -21,6 +21,20 @@
                         <li><a href="teacher-detail.html">Verifikasi</a></li>
                     </ul>
                 </li>
+                <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+                        <i class="material-symbols-outlined">school</i>
+                        <span class="nav-text">Manage Konten</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li class="{{ request()->is('anggota*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.berita.index') }}">
+                                <span class="nav-text">Berita</span>
+                            </a>
+                        </li>
+                        <li><a href="{{ route('admin.galeri.index') }}">Galeri</a></li>
+                        <li><a href="{{ route('admin.prestasi.index') }}">Prestasi</a></li>
+                    </ul>
+                </li>
 
                 <li class="{{ request()->is('anggota*') ? 'active' : '' }}">
                     <a href="{{ route('anggota.index') }}" aria-expanded="false">
