@@ -17,7 +17,7 @@
                         Buka kesempatan untuk mahasiswa baru yang ingin mengembangkan diri dalam seni bela diri,
                         mempererat persaudaraan, serta mengukir prestasi di tingkat lokal hingga nasional.
                     </p>
-                    <a href="/login" class="btn btn-primary py-3 px-5 mt-3">Daftar Sekarang</a>
+                    <a href="/register" class="btn btn-primary py-3 px-5 mt-3">Daftar Sekarang</a>
                 </div>
                 <div class="col-lg-6">
                     <div class="owl-carousel header-carousel animated fadeIn">
