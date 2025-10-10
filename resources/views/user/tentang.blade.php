@@ -1,19 +1,27 @@
 @extends('layout.app_user')
 
 @section('content')
-    <!-- Hero Start -->
+    <style>
+        .bg-text{
+            color: #2C3E50;
+        }
+        .text-whites{
+            color: #5D6D7E;
+        }
+    </style>
+    <!-- Hero Header Start -->
     <div class="container-fluid pb-5 bg-primary hero-header">
         <div class="container py-5">
             <div class="row g-3 align-items-center">
-                <div class="col-lg-6 text-center text-lg-start">
-                    <h1 class="display-1 mb-0 text-white animated slideInLeft">Tentang Kami</h1>
+                <div class="col-lg-8 text-center text-lg-start">
+                    <h1 class="display-1 mb-0 animated slideInLeft bg-text">Tentang Kami</h1>
                 </div>
-                <div class="col-lg-6 animated slideInRight">
+                <div class="col-lg-4 animated slideInRight">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center justify-content-lg-end mb-0">
-                            <li class="breadcrumb-item"><a class="text-white" href="/">Beranda</a></li>
-                            <li class="breadcrumb-item text-white">Halaman</li>
-                            <li class="breadcrumb-item text-secondary active" aria-current="page">Tentang</li>
+                            <li class="breadcrumb-item"><a class="text-whites" href="/">Beranda</a></li>
+                            <li class="breadcrumb-item text-whites">Halaman</li>
+                            <li class="breadcrumb-item text-whites active" aria-current="page"><b>Tentang Kami</b></li>
                         </ol>
                     </nav>
                 </div>

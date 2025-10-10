@@ -8,22 +8,34 @@
                         <span class="nav-text">Dashboard</span>
                     </a>
                 </li>
-                <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+                <li class="{{ request()->is('anggota*') ? 'active' : '' }}">
+                    <a href="{{ route('anggota.index') }}" aria-expanded="false">
                         <i class="material-symbols-outlined">school</i>
                         <span class="nav-text">Manage Anggota</span>
                     </a>
-                    <ul aria-expanded="false">
-                        <li class="{{ request()->is('anggota*') ? 'active' : '' }}">
-                            <a href="{{ route('anggota.index') }}" aria-expanded="false">
-                                <span class="nav-text">Anggota</span>
-                            </a>
-                        </li>
-                        <li><a href="teacher-detail.html">Verifikasi</a></li>
-                    </ul>
                 </li>
-                <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+                <li class="{{ request()->is('anggota*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.berita.index') }}" aria-expanded="false">
                         <i class="material-symbols-outlined">school</i>
-                        <span class="nav-text">Manage Konten</span>
+                        <span class="nav-text">Berita</span>
+                    </a>
+                </li>
+                <li class="{{ request()->is('anggota*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.prestasi.index') }}" aria-expanded="false">
+                        <i class="material-symbols-outlined">school</i>
+                        <span class="nav-text">Prestasi</span>
+                    </a>
+                </li>
+                <li class="{{ request()->is('anggota*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.galeri.index') }}" aria-expanded="false">
+                        <i class="material-symbols-outlined">school</i>
+                        <span class="nav-text">Galeri</span>
+                    </a>
+                </li>
+
+                <!-- <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+                        <i class="material-symbols-outlined">school</i>
+                        <span class="nav-text">Prestasi</span>
                     </a>
                     <ul aria-expanded="false">
                         <li class="{{ request()->is('anggota*') ? 'active' : '' }}">
@@ -34,15 +46,15 @@
                         <li><a href="{{ route('admin.galeri.index') }}">Galeri</a></li>
                         <li><a href="{{ route('admin.prestasi.index') }}">Prestasi</a></li>
                     </ul>
-                </li>
+                </li> -->
 
-                <li class="{{ request()->is('anggota*') ? 'active' : '' }}">
+                <!-- <li class="{{ request()->is('anggota*') ? 'active' : '' }}">
                     <a href="{{ route('anggota.index') }}" aria-expanded="false">
                         <i class="material-symbols-outlined">event</i>
                         <span class="nav-text">Event</span>
                     </a>
-                </li>
-                <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+                </li> -->
+                <!-- <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                         <i class="material-symbols-outlined">money</i>
                         <span class="nav-text">Keuangan</span>
                     </a>
@@ -71,7 +83,7 @@
                         <i class="material-symbols-outlined">app_registration</i>
                         <span class="nav-text">Pengaturan profil</span>
                     </a>
-                </li>
+                </li> -->
             @else
                 <li>
                     <a href="/dashboard" aria-expanded="false">

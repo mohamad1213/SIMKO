@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Prestasi;
 use Illuminate\Http\Request;
 use App\Models\Galeri;
 class GaleriController extends Controller
@@ -93,5 +94,11 @@ class GaleriController extends Controller
         $galeri->delete();
 
         return redirect()->route('admin.galeri.index')->with('success', 'Galeri berhasil dihapus.');
+    }
+    public function show2()
+    {
+        $galeris = Galeri::latest()->get();
+        $prestasis = Prestasi::latest()->get();
+        return view('user.galeri', compact('galeris', 'prestasis'));
     }
 }

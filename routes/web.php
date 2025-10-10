@@ -29,7 +29,7 @@ Route::get('/dashboard', function () {
 // khusus admin
 Route::middleware(['auth'])->group(function () {
     Route::get('anggota', [AnggotaController::class, 'index'])->name('anggota.index');
-    Route::get('anggota/create', [AnggotaController::class, 'create'])->name('anggota.ceate');
+    Route::get('anggota/create', [AnggotaController::class, 'create'])->name('anggota.create');
     Route::get('anggota/{id}', [AnggotaController::class, 'show'])->name('anggota.show');
     Route::get('anggota/{id}/update', [AnggotaController::class, 'update'])->name('anggota.update');
     Route::post('anggota/{id}/verifikasi', [AnggotaController::class, 'verifikasi'])->name('anggota.verifikasi');
@@ -47,14 +47,15 @@ Route::get('/', function () {
 Route::get('/tentang', function () {
     return view('user.tentang');
 })->name('tentang');
-Route::get('/keanggotaan', function () {
-    return view('user.keanggotaan');
-})->name('keanggotaan');
+// Route::get('/keanggotaan', function () {
+//     return view('user.keanggotaan');
+// })->name('keanggotaan');
 
-Route::get('/galeris', function () {
-    return view('user.galeri');
-})->name('galeri.index');
 
+Route::get('/keanggotaan', [AnggotaController::class, 'index_frontend'])->name('keanggotaan');
+Route::get('/galeris', [GaleriController::class, 'show2'])->name('galeri.index');
+Route::get('/kegiatan', [BeritaController::class, 'index_frontend'])->name('berita.index');
+Route::get('/kegiatan/{slug}', [BeritaController::class, 'show_frontend'])->name('berita.show');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('galeri', [GaleriController::class, 'index'])->name('admin.galeri.index');

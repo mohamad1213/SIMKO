@@ -27,40 +27,47 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Judul</th>
+                                        <th>Kategori</th>
                                         <th>Tanggal</th>
+                                        <th>Lokasi</th>
                                         <th>Gambar</th>
-                                        <th>Aksi</th>
+                                        <th class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse($beritas as $index => $berita)
                                         <tr>
-                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $berita->judul }}</td>
-                                            <td>{{ $berita->tanggal }}</td>
+                                            <td>{{ $berita->kategori ?? '-' }}</td>
+                                            <td>{{ $berita->tanggal ? \Carbon\Carbon::parse($berita->tanggal)->format('d M Y') : '-' }}
+                                            </td>
+                                            <td>{{ $berita->lokasi ?? '-' }}</td>
                                             <td>
                                                 @if($berita->gambar)
-                                                    <img src="{{ asset('storage/' . $berita->gambar) }}" width="100">
+                                                    <img src="{{ asset('storage/' . $berita->gambar) }}" alt="gambar"
+                                                        class="img-thumbnail" width="100">
                                                 @else
                                                     <span class="text-muted">Tidak ada</span>
                                                 @endif
                                             </td>
-                                            <td>
+                                            <td class="text-center">
                                                 <a href="{{ route('admin.berita.show', $berita->id) }}"
                                                     class="btn btn-sm btn-info">Lihat</a>
                                                 <a href="{{ route('admin.berita.edit', $berita->id) }}"
                                                     class="btn btn-sm btn-warning">Edit</a>
                                                 <form action="{{ route('admin.berita.destroy', $berita->id) }}" method="POST"
-                                                    class="d-inline">
-                                                    @csrf @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger"
-                                                        onclick="return confirm('Yakin hapus berita?')">Hapus</button>
+                                                    class="d-inline"
+                                                    onsubmit="return confirm('Yakin ingin menghapus berita ini?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                                                 </form>
                                             </td>
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="7" class="text-center">Belum ada data prestasi</td>
+                                            <td colspan="7" class="text-center text-muted">Belum ada data berita</td>
                                         </tr>
                                     @endforelse
                                 </tbody>

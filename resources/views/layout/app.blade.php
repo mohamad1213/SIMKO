@@ -4,7 +4,6 @@
 <head>
 	@include('partials/head')
 </head>
-
 <body>
 	<div id="preloader">
 		<div class="loader">

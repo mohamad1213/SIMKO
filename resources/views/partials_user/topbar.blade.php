@@ -15,6 +15,7 @@
                     <a href="{{route('tentang')}}" class="nav-item nav-link">Tentang</a>
                     <a href="{{route('keanggotaan')}}" class="nav-item nav-link">Keanggotaan</a>
                     <a href="{{ route('galeri.index') }}" class="nav-item nav-link">Galeri</a>
+                    <a href="{{ route('berita.index') }}" class="nav-item nav-link">Kegiatan</a>
                     <!-- <div class="nav-item dropdown">
                         <a href="#!" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu bg-light mt-2">
@@ -22,7 +23,7 @@
                             <a href="team.html" class="dropdown-item">Kegiatan & Prestasi</a>
                         </div>
                     </div> -->
-                    <a href="{{ route('login') }}" class="nav-item nav-link">Login</a>
+                    <a href="{{ route('login') }}" class="nav-item nav-link"><i class="bi bi-box-arrow-in-right"></i></a>
                 </div>
             </div>
         </nav>

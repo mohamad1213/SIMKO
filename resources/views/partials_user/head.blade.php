@@ -19,6 +19,8 @@
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- PhotoSwipe CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.css">
 
     <!-- Libraries Stylesheet -->
     <link href="{{ url('frontend/lib/animate/animate.min.css') }}" rel="stylesheet">
@@ -30,3 +32,5 @@
     <!-- Template Stylesheet -->
     <link href="{{ url('frontend/css/style.css') }}" rel="stylesheet">
 </head>
+<!-- PhotoSwipe JS -->
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe-lightbox.esm.min.js" type="module"></script>

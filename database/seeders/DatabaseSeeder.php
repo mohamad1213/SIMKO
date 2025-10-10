@@ -12,9 +12,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([
-            UserSeeder::class,
-        ]);
+        \App\Models\Berita::create([
+        'judul' => 'Kegiatan Kenaikan Tingkat UKM Pagar Nusa 2025',
+        'kategori' => 'Kegiatan',
+        'tanggal' => '2025-10-10',
+        'lokasi' => 'Aula Utama Universitas PGRI Yogyakarta',
+        'deskripsi' => '<p>UKM Pagar Nusa sukses menyelenggarakan acara kenaikan tingkat dengan suasana penuh semangat dan kebersamaan.</p>
+                        <p>Acara dihadiri oleh Ketua UKM, pelatih senior, serta tamu undangan dari berbagai cabang Pagar Nusa.</p>',
+        'gambar' => 'app/public/frontend/img/about-2.jpg'
+    ]);
     }
 
 }

@@ -177,4 +177,15 @@ class AnggotaController extends Controller
 
         return redirect()->route('anggota.index')->with('success', 'Status anggota berhasil diperbarui!');
     }
+    public function index_frontend(Request $request)
+    {
+        $query = $request->input('q'); // ambil kata kunci dari input pencarian
+
+        $anggotas = Anggota::when($query, function ($qbuilder) use ($query) {
+            $qbuilder->where('nama', 'like', "%{$query}%")
+                ->orWhere('nik', 'like', "%{$query}%");
+        })->latest()->get();
+
+        return view('user.keanggotaan', compact('anggotas', 'query'));
+    }
 }

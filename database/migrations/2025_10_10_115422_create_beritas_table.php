@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -14,11 +13,15 @@ return new class extends Migration
         Schema::create('beritas', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
-            $table->text('konten');
-            $table->string('gambar')->nullable(); // opsional
+            $table->string('slug')->unique();
+            $table->string('kategori')->nullable();
             $table->date('tanggal')->nullable();
+            $table->string('lokasi')->nullable();
+            $table->text('deskripsi')->nullable();
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
+
     }
 
     /**
